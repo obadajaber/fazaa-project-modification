@@ -1,0 +1,1263 @@
+/* ==============================================================
+   1. Variables and Base Styles (المتغيرات والأساسيات)
+   ============================================================== */
+
+/* Root variables for colors, fonts, transitions (متغيرات عامة للتصميم) */
+:root {
+    --primary-red: #E63946;
+    --primary-red-hover: #D62828;
+    --primary-red-glow: rgba(230, 57, 70, 0.4);
+    --bg-light: #F8F9FA;
+    --text-dark: #2B2D42;
+    --text-muted: #8D99AE;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px rgba(43, 45, 66, 0.08);
+    --font-heading: 'Cairo', sans-serif;
+    --font-body: 'Tajawal', sans-serif;
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Global body styling (تنسيق عام للصفحة) */
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+/* Default select options style (تنسيق عناصر select) */
+option {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Headings and main UI elements font (خط العناوين والعناصر الأساسية) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-logo,
+.platform-name,
+.slogan,
+.btn {
+    font-family: var(--font-heading);
+}
+
+/* Override Bootstrap danger color (تخصيص اللون الأحمر) */
+.text-danger {
+    color: var(--primary-red) !important;
+}
+
+/* Muted text color (النصوص الثانوية) */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Background danger color (خلفية باللون الأحمر) */
+.bg-danger {
+    background-color: var(--primary-red) !important;
+}
+
+/* Small font utility class (خط صغير) */
+.font-sm {
+    font-size: 0.8rem;
+}
+
+/* ==============================================================
+   2. Dark Theme Overrides (تنسيقات الوضع الليلي)
+   ============================================================== */
+
+/* Dark mode root variables override (تغيير الألوان في الوضع الليلي) */
+[data-theme="dark"] {
+    --bg-light: #161625;
+    --text-dark: #E4E6EB;
+    --text-muted: #A0AAB2;
+    --glass-bg: rgba(26, 26, 40, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+}
+
+/* Background gradient in dark mode (خلفية داكنة متدرجة) */
+[data-theme="dark"] .bg-shapes {
+    background: linear-gradient(135deg, #161625 0%, #1a1a2e 100%);
+}
+
+/* Override text color in dark mode (تعديل لون النص) */
+[data-theme="dark"] .text-dark {
+    color: var(--text-dark) !important;
+}
+
+/* Decorative shape styling (عنصر زخرفي) */
+[data-theme="dark"] .shape-3 {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Input fields dark style (تنسيق الحقول في الوضع الليلي) */
+[data-theme="dark"] .premium-input {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Placeholder style in dark mode (تنسيق placeholder) */
+[data-theme="dark"] .premium-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1 !important;
+}
+
+/* Select dropdown arrow customization (أيقونة select) */
+[data-theme="dark"] .form-select.premium-input {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23A0AAB2' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* Input focus style (عند التركيز على الحقل) */
+[data-theme="dark"] .premium-input:focus {
+    background-color: #222230 !important;
+    border-color: var(--primary-red) !important;
+}
+
+/* Buttons in dark mode (أزرار الوضع الليلي) */
+[data-theme="dark"] .btn-light,
+[data-theme="dark"] .control-btn {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-dark) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button hover effect (تأثير hover للأزرار) */
+[data-theme="dark"] .btn-light:hover,
+[data-theme="dark"] .control-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Social buttons style (أزرار التواصل) */
+[data-theme="dark"] .social-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Social buttons hover (hover للأزرار الاجتماعية) */
+[data-theme="dark"] .social-btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Facebook icon color (لون أيقونة فيسبوك) */
+[data-theme="dark"] .social-btn i.fa-facebook {
+    color: #1877F2 !important;
+}
+
+/* Role card style (بطاقات اختيار المستخدم) */
+[data-theme="dark"] .role-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Role card hover (تأثير hover) */
+[data-theme="dark"] .role-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Glass background utility (خلفية زجاجية) */
+[data-theme="dark"] .bg-glass {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Create account box (صندوق إنشاء الحساب) */
+[data-theme="dark"] .create-account-box {
+    background: rgba(230, 57, 70, 0.08);
+}
+
+/* Toggle password hover (زر إظهار كلمة المرور) */
+[data-theme="dark"] .toggle-password:hover {
+    color: #fff !important;
+}
+
+/* Divider text style (نص الفاصل) */
+[data-theme="dark"] .divider-text {
+    background-color: #1e1e2d !important;
+    color: #A0AAB2 !important;
+}
+
+/* Options in dark mode (عناصر select) */
+[data-theme="dark"] option {
+    background-color: #1a1a2e !important;
+    color: #E4E6EB !important;
+}
+
+/* Fix floating label background (تصحيح label) */
+[data-theme="dark"] .form-floating>label::after {
+    background-color: transparent !important;
+}
+
+/* Highlight specific labels (تمييز بعض الحقول المهمة) */
+[data-theme="dark"] label[for="bloodTypeDonor"],
+[data-theme="dark"] label[for="bloodTypePatient"],
+[data-theme="dark"] label[for="smokerStatus"],
+[data-theme="dark"] label[for="lastDonation"],
+[data-theme="dark"] label[for="urgencyLevel"],
+[data-theme="dark"] label[for="urgency"] {
+    color: #ff3c3c !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
+}
+
+
+/* Light mode label styling override (تعديل لون العناوين في الوضع الصباحي) */
+[data-theme="light"] label[for="bloodTypeDonor"],
+[data-theme="light"] label[for="bloodTypePatient"],
+[data-theme="light"] label[for="smokerStatus"],
+[data-theme="light"] label[for="lastDonation"],
+[data-theme="light"] label[for="urgencyLevel"],
+[data-theme="light"] label[for="urgency"] {
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+}
+
+/* Modal styling in dark mode (تنسيق النافذة المنبثقة في الوضع الليلي) */
+[data-theme="dark"] .modal-content {
+    background-color: #1a1a2e !important;
+    color: #E4E6EB !important;
+}
+
+/* Close button style in dark mode (زر الإغلاق) */
+[data-theme="dark"] .modal-content .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* OTP input fields styling (حقول إدخال رمز التحقق) */
+[data-theme="dark"] .otp-input {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: #E4E6EB !important;
+}
+
+/* Disabled OTP input styling (الحقل غير المفعل) */
+[data-theme="dark"] .otp-input:disabled {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ==============================================================
+   3. Background Shapes and Animation (الخلفية والحركات)
+   ============================================================== */
+
+/* Full screen animated background container (حاوية الخلفية المتحركة) */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #edf2f4 100%);
+}
+
+/* Base shape styling (تنسيق عام للأشكال) */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 20s infinite alternate;
+}
+
+/* First floating shape (الشكل الأول) */
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(230, 57, 70, 0.12);
+    top: -100px;
+    right: -50px;
+    animation-delay: 0s;
+}
+
+/* Second floating shape (الشكل الثاني) */
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    background: rgba(141, 153, 174, 0.15);
+    bottom: -100px;
+    left: -50px;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+/* Third floating shape (الشكل الثالث) */
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.5);
+    top: 30%;
+    left: 40%;
+    animation-delay: -10s;
+    animation-duration: 15s;
+}
+
+/* Floating animation keyframes (حركة الطفو) */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -50px) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-20px, 30px) scale(0.95);
+    }
+}
+
+/* Entrance animation for elements (حركة دخول العناصر) */
+.entrance-anim {
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Slide + fade animation (تحريك للأعلى مع تلاشي) */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse animation (نبض خفيف) */
+.pulse-anim {
+    animation: pulse 2s infinite;
+}
+
+/* Pulse keyframes (حركة النبض) */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* Shake animation (اهتزاز عند الخطأ) */
+.shake-anim {
+    animation: shake 0.2s ease-in-out forwards;
+}
+
+/* Shake keyframes (تفاصيل الاهتزاز) */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(5px);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* ==============================================================
+   4. UI Components (البطاقة الزجاجية، الحقول، الأزرار)
+   ============================================================== */
+
+/* Controls wrapper spacing (مسافة بين الأزرار العلوية) */
+.controls-wrapper {
+    gap: 12px;
+}
+
+/* Control buttons style (أزرار التحكم) */
+.control-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+/* Glass card container (البطاقة الزجاجية) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    box-shadow: var(--glass-shadow);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+/* Enable blur effect if supported (تفعيل تأثير الزجاج) */
+@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)) {
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+}
+
+
+/* Register card spacing (مسافات البطاقة الرئيسية) */
+.register-card {
+    padding: 2.5rem 2rem;
+}
+
+/* Logo image styling (تنسيق شعار المنصة) */
+.brand-logo-img {
+    display: block;
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    filter: drop-shadow(0 4px 8px rgba(230, 57, 70, 0.25));
+}
+
+/* Inputs */
+
+/* Main input style (تنسيق الحقول الأساسي) */
+.premium-input {
+    border: 1px solid rgba(141, 153, 174, 0.3) !important;
+    border-radius: 12px !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.95rem;
+    padding-top: 1.625rem !important;
+    padding-bottom: 0.625rem !important;
+    transition: all var(--transition-fast) !important;
+    box-shadow: none !important;
+}
+
+/* Input focus effect (عند التركيز على الحقل) */
+.premium-input:focus {
+    border-color: var(--primary-red) !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px var(--primary-red-glow) !important;
+}
+
+/* Floating label container (حاوية الحقول العائمة) */
+.custom-floating {
+    position: relative !important;
+    margin-bottom: 28px !important;
+}
+
+/* Floating label default style (تنسيق label الافتراضي) */
+.custom-floating>label {
+    padding-left: 1rem;
+    padding-right: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+/* Floating label active state (عند إدخال أو التركيز) */
+.custom-floating>.form-control:focus~label,
+.custom-floating>.form-control:not(:placeholder-shown)~label,
+.custom-floating>.form-select~label {
+    color: var(--primary-red);
+    transform: scale(0.85) translateY(-1.2rem) translateX(0);
+    /* تم زيادة الارتفاع للأعلى */
+    opacity: 0.9;
+    background-color: transparent !important;
+}
+
+/* RTL adjustment for floating label (تعديل الاتجاه للعربية) */
+[dir="rtl"] .custom-floating>.form-control:focus~label,
+[dir="rtl"] .custom-floating>.form-control:not(:placeholder-shown)~label,
+[dir="rtl"] .custom-floating>.form-select~label {
+    transform: scale(0.85) translateY(-1.2rem) translateX(10%);
+    /* ضبط المحاذاة لليمين في العربية */
+}
+
+/* Hide placeholder until focus (إخفاء placeholder حتى التركيز) */
+.custom-floating>.form-control::placeholder {
+    color: transparent !important;
+    transition: color var(--transition-fast);
+}
+
+/* Show placeholder on focus (إظهار placeholder عند التركيز) */
+.custom-floating>.form-control:focus::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* Dark mode placeholder (placeholder في الوضع الليلي) */
+[data-theme="dark"] .custom-floating>.form-control:focus::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Validation message positioning (موقع رسالة الخطأ) */
+.custom-floating .invalid-feedback {
+    position: absolute !important;
+    bottom: -24px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    font-size: 0.8rem !important;
+}
+
+/* Toggle password button (زر إظهار/إخفاء كلمة المرور) */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    inset-inline-end: 12px;
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+}
+
+/* Toggle password hover effect (تأثير hover) */
+.toggle-password:hover {
+    background: rgba(141, 153, 174, 0.15);
+    color: var(--text-dark) !important;
+}
+
+/* Force LTR for email/phone inputs (اتجاه الحقول الإنجليزية) */
+.email-input-dir {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Invalid input styling (عند وجود خطأ) */
+.was-validated .form-control:invalid {
+    border-color: var(--primary-red) !important;
+    background-image: none !important;
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Valid input styling (عند صحة الإدخال) */
+.was-validated .form-control:valid {
+    border-color: #198754 !important;
+    background-image: none !important;
+}
+
+/* Buttons */
+
+/* General button size (حجم الأزرار) */
+.btn {
+    min-height: 48px;
+}
+
+/* Primary danger button (زر رئيسي أحمر) */
+.btn-danger {
+    background: var(--primary-red);
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+/* Hover effect for danger button (تأثير hover) */
+.btn-danger:hover {
+    background: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--primary-red-glow) !important;
+}
+
+/* Active button state (عند الضغط) */
+.btn-danger:active {
+    transform: translateY(0);
+}
+
+/* Glow button container (زر مع تأثير توهج) */
+.btn-glow {
+    overflow: hidden;
+}
+
+/* Glow effect animation (تأثير التوهج) */
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.4s;
+}
+
+/* Glow on click (تفعيل التوهج عند الضغط) */
+.btn-glow:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Social buttons base style (أزرار تسجيل عبر مواقع التواصل) */
+.social-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transition: all var(--transition-fast) !important;
+}
+
+/* Social buttons hover (تأثير hover) */
+.social-btn:hover {
+    background: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+
+/* ==============================================================
+   5. Specific Components (OTP, Progress Bar, Roles, Misc)
+   ============================================================== */
+
+/* Custom checkbox styling (تخصيص شكل checkbox) */
+.custom-checkbox .form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    margin-top: 0.2em;
+    border-color: rgba(141, 153, 174, 0.5);
+    cursor: pointer;
+}
+
+/* Checkbox checked state (عند التحديد) */
+.custom-checkbox .form-check-input:checked {
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+/* Checkbox focus effect (عند التركيز) */
+.custom-checkbox .form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem var(--primary-red-glow);
+}
+
+/* Underline hover effect (تأثير خط تحت النص) */
+.hover-underline {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hidden underline before hover (الخط قبل الظهور) */
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: bottom right;
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animate underline on hover (إظهار الخط عند hover) */
+.hover-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Divider line background (خط فاصل خلف النص) */
+.divider-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(141, 153, 174, 0.2);
+    z-index: 0;
+}
+
+/* Divider text styling (نص الفاصل) */
+.divider-text {
+    background-color: #ffffff !important;
+    color: var(--text-muted) !important;
+}
+
+/* Glass-like background utility (خلفية ناعمة) */
+.bg-glass {
+    background-color: #f6f7f8;
+    border-radius: 20px;
+}
+
+/* Create account box styling (صندوق إنشاء الحساب) */
+.create-account-box {
+    background: rgba(230, 57, 70, 0.04);
+    border: 1px dashed rgba(230, 57, 70, 0.2);
+    transition: var(--transition-fast);
+}
+
+/* Hover effect for create account box (تأثير hover) */
+.create-account-box:hover {
+    background: rgba(230, 57, 70, 0.08);
+}
+
+/* Role selection grid layout (تخطيط اختيار الدور) */
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+/* Role card base style (بطاقة الدور) */
+.role-card {
+    border: 2px solid rgba(141, 153, 174, 0.2);
+    border-radius: 12px;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+}
+
+/* Role card hover (عند المرور) */
+.role-card:hover {
+    border-color: rgba(230, 57, 70, 0.4);
+    background: #fff;
+    transform: translateY(-2px);
+    color: var(--text-dark);
+}
+
+/* Role icon styling (أيقونة الدور) */
+.role-card i {
+    font-size: 1.5rem;
+    transition: var(--transition-fast);
+}
+
+/* Selected role card (عند الاختيار) */
+.btn-check:checked+.role-card {
+    border-color: var(--primary-red);
+    background: rgba(230, 57, 70, 0.05);
+    color: var(--primary-red);
+    box-shadow: 0 4px 12px var(--primary-red-glow);
+}
+
+/* Icon animation when selected (تكبير الأيقونة) */
+.btn-check:checked+.role-card i {
+    transform: scale(1.1);
+}
+
+/* Dynamic fields container (حقول ديناميكية) */
+.dynamic-fields-section {
+    display: none;
+    animation: fadeInHalf 0.4s forwards;
+}
+
+/* Active dynamic section (القسم الظاهر) */
+.dynamic-fields-section.active {
+    display: block;
+}
+
+/* Fade-in animation for dynamic fields (ظهور تدريجي) */
+@keyframes fadeInHalf {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Password strength bar container (حاوية قوة كلمة المرور) */
+.password-strength-container {
+    height: 4px;
+    background-color: rgba(141, 153, 174, 0.2);
+    border-radius: 2px;
+    margin-top: -12px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    margin-left: 4px;
+    overflow: hidden;
+}
+
+/* Password strength bar (الشريط المتحرك) */
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 2px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Weak password state (كلمة مرور ضعيفة) */
+.strength-weak {
+    background-color: #dc3545 !important;
+    width: 33.33% !important;
+}
+
+/* Medium password state (متوسطة) */
+.strength-medium {
+    background-color: #ffc107 !important;
+    width: 66.66% !important;
+}
+
+/* Strong password state (قوية) */
+.strength-strong {
+    background-color: #198754 !important;
+    width: 100% !important;
+}
+
+/* Password strength text (نص قوة كلمة المرور) */
+.strength-text {
+    font-size: 0.75rem;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    margin-right: 8px;
+    text-align: right;
+    display: block;
+    transition: color 0.3s;
+}
+
+
+/* Password strength text colors (ألوان قوة كلمة المرور) */
+.text-weak {
+    color: #dc3545;
+}
+
+.text-medium {
+    color: #ffc107;
+}
+
+.text-strong {
+    color: #198754;
+}
+
+/* Form progress bar (شريط تقدم النموذج) */
+.form-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #dc3545, #198754);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 10;
+}
+
+/* RTL progress bar direction (اتجاه الشريط بالعربية) */
+[dir="rtl"] .form-progress-bar {
+    left: auto;
+    right: 0;
+    background: linear-gradient(270deg, #dc3545, #198754);
+}
+
+/* Valid input state (حقل صحيح) */
+.premium-input.is-valid {
+    border-color: #198754 !important;
+    background-image: none !important;
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.2) !important;
+}
+
+/* Invalid input state (حقل خاطئ) */
+.premium-input.is-invalid {
+    border-color: #dc3545 !important;
+    background-image: none !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2) !important;
+}
+
+/* OTP input styling (حقول رمز التحقق) */
+.otp-input {
+    width: 60px !important;
+    height: 65px !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    caret-color: var(--primary-color);
+}
+
+/* OTP focus animation (عند التركيز) */
+.otp-input:focus {
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* Language LTR / RTL Fixes (إصلاح اتجاه اللغة) */
+
+/* Align validation text for LTR (محاذاة الأخطاء بالإنجليزي) */
+[dir="ltr"] .custom-floating .invalid-feedback {
+    text-align: left !important;
+}
+
+/* Select padding fix for LTR (تعديل padding للقوائم) */
+[dir="ltr"] .custom-floating .form-select {
+    padding-right: 1.5rem !important;
+    padding-left: 0.5rem !important;
+    background-position: right 0.5rem center !important;
+}
+
+/* Prevent label overflow (منع كسر النص) */
+[dir="ltr"] .custom-floating label {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 85% !important;
+}
+
+/* Date input spacing (تنسيق حقل التاريخ) */
+[dir="ltr"] .custom-floating input[type="date"] {
+    padding-right: 0.5rem !important;
+}
+
+/* Fix long date label (إصلاح عنوان التاريخ) */
+[dir="ltr"] label[for="lastDonation"] {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    font-size: inherit !important;
+}
+
+/* Password requirements LTR alignment (محاذاة الشروط) */
+[dir="ltr"] .password-requirements {
+    text-align: left !important;
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+/* Reduce font size for select & date (تصغير الخط) */
+.custom-floating .form-select,
+.custom-floating input[type="date"] {
+    font-size: 0.85rem !important;
+}
+
+/* Light mode date label fix (تصحيح label التاريخ) */
+[data-theme="light"] .custom-floating>input[type="date"]:not(:focus)~label {
+    color: var(--text-muted) !important;
+}
+
+/* Password requirements list (قائمة الشروط) */
+.password-requirements {
+    font-size: 0.8rem;
+    padding-right: 5px;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+/* Requirement item (عنصر شرط) */
+.req-item {
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+/* Success icon change (تحويل الأيقونة لصح) */
+.req-item.text-success i::before {
+    content: "\f00c";
+}
+
+/* Error icon change (تحويل الأيقونة لخطأ) */
+.req-item.text-danger i::before {
+    content: "\f00d";
+}
+
+/* ==============================================================
+   6. Media Queries
+   ============================================================== */
+
+/* Small screens تحسين الشاشات الصغيرة */
+@media (min-width: 481px) {
+    .glass-card {
+        padding: 2rem 1.25rem;
+        border-radius: 20px;
+    }
+
+    .brand-logo-img {
+        width: 70px;
+    }
+
+    h1.platform-name {
+        font-size: 1.75rem !important;
+    }
+
+    .shape-1 {
+        width: 400px;
+        height: 400px;
+        top: -150px;
+        right: -80px;
+    }
+
+    .shape-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -120px;
+        left: -80px;
+    }
+
+    .shape-3 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* Tablets & medium screens (الأجهزة المتوسطة) */
+@media (min-width: 769px) {
+
+    .glass-card,
+    .register-card {
+        padding: 2.5rem 2rem;
+        border-radius: 24px;
+    }
+
+    .brand-logo-img {
+        width: 80px;
+    }
+
+    h1.platform-name {
+        font-size: 2rem !important;
+    }
+
+    .shape-1 {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        right: -100px;
+    }
+
+    .shape-2 {
+        width: 500px;
+        height: 500px;
+        bottom: -150px;
+        left: -100px;
+    }
+
+    .shape-3 {
+        width: 400px;
+        height: 400px;
+    }
+
+    /* Expand role grid on larger screens (زيادة الأعمدة) */
+    .role-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Large screens (الشاشات الكبيرة) */
+@media (min-width: 1025px) {
+    .glass-card {
+        padding: 3rem 2.5rem;
+    }
+}
+
+/* ==============================================================
+   7. Segmented Control (مبدل نوع الحساب)
+   ============================================================== */
+.segmented-control {
+    display: flex;
+    background: rgba(141, 153, 174, 0.15);
+    border-radius: 12px;
+    padding: 6px;
+    width: 100%;
+}
+
+.segmented-tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 8px;
+    margin: 0;
+}
+
+.segmented-tab:hover {
+    color: var(--text-dark);
+}
+
+.btn-check:checked+.segmented-tab {
+    background-color: var(--primary-red);
+    color: #fff;
+    box-shadow: 0 4px 12px var(--primary-red-glow);
+}
+
+/* Dark Theme Overrides for Segmented Control */
+[data-theme="dark"] .segmented-control {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .segmented-tab:hover {
+    color: #fff;
+}
+
+/* ==============================================================
+   8. Intl-Tel-Input Styling Overrides (تنسيقات مكتبة الهاتف)
+   ============================================================== */
+.iti {
+    width: 100%;
+    display: block;
+}
+
+.iti__country-list {
+    background-color: var(--bg-light);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: var(--glass-shadow);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    text-align: left;
+    /* Always LTR for countries list */
+}
+
+.iti__flag-container {
+    padding: 0 10px;
+}
+
+/* Fix padding for phone input to accommodate the flag */
+.iti input[type="tel"].premium-input {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Dark Theme Overrides for Intl-Tel-Input */
+[data-theme="dark"] .iti__country-list {
+    background-color: #1a1a2e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .iti__country.iti__highlight {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .iti__search-input {
+    background-color: transparent;
+    color: #fff;
+}
+
+/* 1. إجبار إظهار رمز الدولة بجانب العلم */
+.iti__selected-dial-code {
+    display: inline-block !important;
+    margin-left: 6px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+/* لون رمز الدولة في الوضع الليلي */
+[data-theme="dark"] .iti__selected-dial-code {
+    color: #fff !important;
+}
+
+/* 2. إعطاء مساحة داخلية للحقل لكي لا يختفي الرمز تحت الأرقام التي يكتبها المستخدم */
+.iti input[type="tel"].premium-input {
+    padding-left: 95px !important;
+}
+
+/* 3. إصلاح شكل صندوق البحث داخل قائمة الدول في الوضع الليلي */
+[data-theme="dark"] .iti__search-input {
+    background-color: #1a1a2e !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ==============================================================
+   إصلاح وتجميل قائمة دول رقم الهاتف (النسخة النهائية)
+   ============================================================== */
+
+/* 1. الحاوية الرئيسية (لحل مشكلة التداخل ورفع القائمة فوق الحقول الأخرى) */
+.iti {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 99 !important;
+}
+
+/* 2. القائمة المنسدلة (عرض أفقي كامل متناسق مع الحقل) */
+.iti__country-list {
+    width: 100% !important;
+    /* أخذ العرض بالكامل */
+    max-width: 100% !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    margin-top: 8px !important;
+    white-space: normal !important;
+}
+
+/* الوضع الليلي للقائمة */
+[data-theme="dark"] .iti__country-list {
+    background-color: #1a1a2e !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+    color: #E4E6EB !important;
+}
+
+/* 3. صندوق البحث (بدون الخلفية البيضاء الشاذة) */
+.iti__search-input {
+    background-color: #f8f9fa !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    margin: 8px auto !important;
+    width: 95% !important;
+    display: block;
+    color: #212529 !important;
+}
+
+[data-theme="dark"] .iti__search-input {
+    background-color: #222230 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+}
+
+/* 4. التحويم على الدول */
+.iti__country:hover,
+.iti__country.iti__highlight {
+    background-color: rgba(230, 57, 70, 0.1) !important;
+}
+
+[data-theme="dark"] .iti__country:hover,
+[data-theme="dark"] .iti__country.iti__highlight {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 5. إبراز رمز الدولة (مثل +962) بجانب العلم */
+.iti__selected-dial-code {
+    display: inline-block !important;
+    margin-left: 8px;
+    margin-right: 4px;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .iti__selected-dial-code {
+    color: #ffffff !important;
+}
+
+/* 6. إزاحة النص للغة الإنجليزية (LTR) لكي لا يغطي الرمز */
+.iti input[type="tel"].premium-input {
+    padding-left: 105px !important;
+}
+
+/* 7. إزاحة النص للغة العربية (RTL) لكي لا يغطي الرمز */
+[dir="rtl"] .iti input[type="tel"].premium-input {
+    padding-right: 105px !important;
+    padding-left: 1rem !important;
+}

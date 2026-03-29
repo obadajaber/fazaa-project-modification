@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!-- Root HTML document (بداية ملف HTML) -->
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <!-- Page meta configuration (إعدادات الصفحة الأساسية) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="register_title">إنشاء حساب | فزعة</title>
+
+    <!-- External resources: favicon, CSS, fonts (المكتبات والخطوط) -->
+    <link rel="icon" href="fazaalogo.webp" type="image/webp">
+    <link id="bootstrapCss" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Theme & language toggle buttons (تغيير الثيم واللغة) -->
+    <div class="position-absolute top-0 end-0 p-3 z-3 d-flex gap-2 controls-wrapper">
+        <button class="btn btn-light shadow-sm rounded-circle control-btn" id="themeToggle" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="btn btn-light shadow-sm rounded-circle control-btn fw-bold font-sm" id="langToggle"
+            title="Toggle Language">
+            EN
+        </button>
+    </div>
+
+    <!-- Decorative background shapes (خلفية زخرفية) -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Main layout container (الحاوية الرئيسية) -->
+    <main class="d-flex align-items-center justify-content-center min-vh-100 position-relative z-1 py-4 py-md-5">
+        <div class="container relative-z">
+            <div class="row w-100 justify-content-center m-0">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0">
+
+                    <!-- Register card UI (واجهة التسجيل) -->
+                    <div class="glass-card entrance-anim register-card position-relative overflow-hidden">
+
+                        <!-- Progress bar for form steps (شريط تقدم النموذج) -->
+                        <div class="form-progress-bar" id="regProgressBar"></div>
+
+                        <!-- Header section with logo and title (رأس الصفحة) -->
+                        <header class="text-center mb-4 pb-2">
+                            <img src="fazaalogo.webp" alt="فزعة" class="brand-logo-img mx-auto mb-3 pulse-anim">
+                            <h1 class="h2 fw-bold platform-name text-dark mb-1" data-i18n="platform_name">فـــــزعـــــة
+                            </h1>
+                            <p class="text-danger fw-semibold slogan mb-2" data-i18n="slogan">فزعتك بتنقذ حياة</p>
+                            <p class="text-muted small welcome-text" data-i18n="register_welcome">انضم إلينا الآن، خطوة
+                                صغيرة تصنع فرقاً كبيراً</p>
+                        </header>
+
+                        <!-- Register form (نموذج إنشاء الحساب) -->
+                        <form id="registerForm" novalidate>
+
+                            <form id="registerForm" novalidate>
+
+                                <div class="mb-4">
+                                    <div class="segmented-control glass-card-inner">
+                                        <input type="radio" class="btn-check" name="userRole" id="roleIndividual"
+                                            value="individual" checked>
+                                        <label class="segmented-tab" for="roleIndividual" tabindex="0">
+                                            <i class="fa-solid fa-user me-2"></i><span data-i18n="role_individual">حساب
+                                                فردي</span>
+                                        </label>
+
+                                        <input type="radio" class="btn-check" name="userRole" id="roleHospital"
+                                            value="hospital">
+                                        <label class="segmented-tab" for="roleHospital" tabindex="0">
+                                            <i class="fa-solid fa-hospital me-2"></i><span
+                                                data-i18n="role_hospital">حساب مستشفى</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <div class="form-floating custom-floating">
+                                            <input type="text" class="form-control premium-input" id="firstNameInput"
+                                                placeholder="الاسم الأول" data-i18n-placeholder="first_name" required>
+                                            <label for="firstNameInput"><i class="fa-regular fa-user me-2"></i><span
+                                                    data-i18n="first_name">الاسم الأول</span></label>
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error">
+                                                <i class="fa-solid fa-circle-exclamation me-1"></i> <span
+                                                    data-i18n="required_field">مطلوب</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-floating custom-floating">
+                                            <input type="text" class="form-control premium-input" id="lastNameInput"
+                                                placeholder="اسم العائلة" data-i18n-placeholder="last_name" required>
+                                            <label for="lastNameInput"><i class="fa-regular fa-user me-2"></i><span
+                                                    data-i18n="last_name">اسم العائلة</span></label>
+
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error">
+                                                <i class="fa-solid fa-circle-exclamation me-1"></i> <span
+                                                    data-i18n="required_field">مطلوب</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-2">
+                                        <label
+                                            class="form-label fw-bold text-muted small ms-1 mb-2 d-block text-start dir-align">
+                                            <i class="fa-solid fa-phone me-1"></i> <span data-i18n="phone_number">رقم
+                                                الهاتف</span>
+                                        </label>
+                                        <input type="tel" class="form-control premium-input w-100" id="phoneInput"
+                                            dir="ltr" name="fza_phone" autocomplete="new-password" required>
+                                        <div class="invalid-feedback ms-1 mt-1 font-sm animated-error d-none"
+                                            id="phoneErrorMsg">
+                                            <i class="fa-solid fa-circle-exclamation me-1"></i> <span
+                                                data-i18n="phone_invalid_msg">رقم غير صالح</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mt-4">
+                                        <div class="form-floating custom-floating mb-1">
+                                            <input type="email" class="form-control premium-input email-input-dir"
+                                                id="regEmailInput" placeholder="name@example.com" required>
+                                            <label for="regEmailInput"><i class="fa-regular fa-envelope me-2"></i><span
+                                                    data-i18n="email_label">البريد الإلكتروني</span></label>
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error">
+                                                <i class="fa-solid fa-circle-exclamation me-1"></i> <span
+                                                    data-i18n="email_invalid">يرجى إدخال بريد إلكتروني صحيح</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-floating custom-floating position-relative">
+                                            <input type="password"
+                                                class="form-control premium-input pe-5 email-input-dir"
+                                                id="regPasswordInput" placeholder="Password" required minlength="6">
+                                            <label for="regPasswordInput"><i class="fa-solid fa-lock me-2"></i><span
+                                                    data-i18n="password_label">كلمة المرور</span></label>
+                                            <button type="button"
+                                                class="btn btn-link toggle-password text-muted text-decoration-none shadow-none"
+                                                tabindex="-1">
+                                                <i class="fa-regular fa-eye pt-1"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="password-strength-container mt-2">
+                                            <div class="password-strength-bar" id="strengthBar"></div>
+                                        </div>
+                                        <span class="strength-text" id="strengthText"></span>
+
+                                        <ul class="password-requirements mt-1 list-unstyled" id="passwordRequirements"
+                                            style="display: none;">
+                                            <li class="req-item text-danger" id="reqLength"><i
+                                                    class="fa-solid fa-xmark me-2"></i><span data-i18n="req_length">6
+                                                    أحرف على الأقل</span></li>
+                                            <li class="req-item text-danger" id="reqUpper"><i
+                                                    class="fa-solid fa-xmark me-2"></i><span data-i18n="req_upper">حرف
+                                                    إنجليزي كبير</span></li>
+                                            <li class="req-item text-danger" id="reqNumber"><i
+                                                    class="fa-solid fa-xmark me-2"></i><span
+                                                    data-i18n="req_number">أرقام وأحرف</span></li>
+                                            <li class="req-item text-danger" id="reqSymbol"><i
+                                                    class="fa-solid fa-xmark me-2"></i><span data-i18n="req_symbol">رمز
+                                                    واحد (@, #)</span></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-floating custom-floating position-relative mb-2">
+                                            <input type="password"
+                                                class="form-control premium-input pe-5 email-input-dir"
+                                                id="confirmPasswordInput" placeholder="Confirm Password" required>
+                                            <label for="confirmPasswordInput"><i class="fa-solid fa-lock me-2"></i><span
+                                                    data-i18n="confirm_password">تأكيد كلمة المرور</span></label>
+                                            <button type="button"
+                                                class="btn btn-link toggle-password text-muted text-decoration-none shadow-none"
+                                                tabindex="-1">
+                                                <i class="fa-regular fa-eye pt-1"></i>
+                                            </button>
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error"
+                                                id="confirmErrorText">
+                                                <i class="fa-solid fa-circle-exclamation me-1"></i> <span
+                                                    data-i18n="password_mismatch">كلمات المرور غير متطابقة</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dynamicFieldsContainer">
+                                    <div id="hospitalFields" class="dynamic-fields-section row g-3 mt-1">
+                                        <hr class="my-2 text-muted opacity-25">
+                                        <h6 class="fw-bold text-dark mb-2 mt-3">
+                                            <i class="fa-solid fa-hospital me-2 text-danger"></i>
+                                            <span data-i18n="hospital_data">بيانات المستشفى الإضافية</span>
+                                        </h6>
+                                        <div class="col-12">
+                                            <div class="form-floating custom-floating">
+                                                <input type="text" class="form-control premium-input" id="hospitalName"
+                                                    placeholder="Hospital Name">
+                                                <label for="hospitalName" data-i18n="hospital_name">اسم المستشفى
+                                                    بالكامل</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating custom-floating">
+                                                <input type="text" class="form-control premium-input"
+                                                    id="hospitalLocation" placeholder="Location">
+                                                <label for="hospitalLocation" data-i18n="hospital_location">الموقع /
+                                                    المدينة</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-4 text-muted opacity-25">
+
+                                <div class="form-check mb-4 d-flex align-items-center gap-2">
+                                    <input class="form-check-input m-0 shadow-none cursor-pointer" type="checkbox"
+                                        id="termsCheckbox" required>
+                                    <label class="form-check-label font-sm text-muted mt-1 cursor-pointer"
+                                        for="termsCheckbox">
+                                        <span data-i18n="terms_agree">أوافق على</span>
+                                        <a href="#" class="text-decoration-none fw-bold" data-i18n="terms_link">شروط
+                                            الاستخدام وسياسة الخصوصية</a>
+                                    </label>
+                                </div>
+
+                                <button type="submit"
+                                    class="btn btn-danger w-100 py-3 mt-2 mb-4 rounded-3 fw-bold shadow-sm position-relative btn-glow"
+                                    id="regBtn">
+                                    <span class="btn-text" data-i18n="create_account_btn">إنشاء حساب</span>
+                                    <span
+                                        class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none text-white"
+                                        role="status" aria-hidden="true" id="regBtnLoader"></span>
+                                </button>
+                            </form>
+
+                            <!-- Divider line (فاصل بصري) -->
+                            <hr class="my-4 text-muted opacity-25">
+
+                            <!-- Dynamic fields based on user role (حقول ديناميكية حسب نوع المستخدم) -->
+                            <div id="dynamicFieldsContainer">
+
+                                <!-- Hospital fields section -->
+                                <div id="hospitalFields" class="dynamic-fields-section row g-3">
+                                    <h6 class="fw-bold text-dark mb-2">
+                                        <i class="fa-solid fa-hospital me-2 text-danger"></i>
+                                        <span data-i18n="hospital_data">بيانات المستشفى</span>
+                                    </h6>
+
+                                    <!-- Hospital name -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating custom-floating">
+                                            <input type="text" class="form-control premium-input pt-4 pb-2"
+                                                id="hospitalName" placeholder="Hospital Name" required>
+                                            <label for="hospitalName" data-i18n="hospital_name">اسم المستشفى</label>
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error"
+                                                data-i18n="required_field">مطلوب</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hospital location -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating custom-floating">
+                                            <input type="text" class="form-control premium-input pt-4 pb-2"
+                                                id="hospitalLocation" placeholder="Location" required>
+                                            <label for="hospitalLocation" data-i18n="hospital_location">الموقع /
+                                                المدينة</label>
+                                            <div class="invalid-feedback ms-1 mt-1 font-sm animated-error"
+                                                data-i18n="required_field">مطلوب</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Loading spinner inside button -->
+                            <span
+                                class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none text-white"
+                                role="status" aria-hidden="true" id="regBtnLoader"></span>
+                            </button>
+
+                            <!-- Redirect to login section (الانتقال لتسجيل الدخول) -->
+                            <div class="text-center mt-2 px-3 pb-2 pt-2 create-account-box rounded-3">
+                                <span class="text-muted small fw-medium" data-i18n="already_have_account">عندك حساب
+                                    بالفعل؟</span>
+                                <a href="index.html"
+                                    class="text-decoration-none text-danger fw-bold ms-1 hover-underline"
+                                    data-i18n="login_link">تسجيل الدخول</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast notifications (رسائل التنبيه) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 z-3">
+        <div id="appToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <!-- Toast message content -->
+                <div class="toast-body fw-bold font-body" id="toastMessage"></div>
+
+                <!-- Close toast button -->
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP verification modal (نافذة التحقق من الحساب) -->
+    <div class="modal fade" id="otpModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+
+                <!-- Modal header with icon -->
+                <div class="modal-header border-0 pb-0 justify-content-center mt-4 position-relative">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-4"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div
+                        class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center p-4">
+                        <i class="fa-solid fa-envelope-open-text fs-2"></i>
+                    </div>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body pt-4 px-4 pb-5 text-center">
+
+                    <!-- Title -->
+                    <h4 class="fw-bold mb-2" data-i18n="otp_title">التحقق من الحساب</h4>
+
+                    <!-- Description with user email -->
+                    <p class="text-muted font-sm mb-4">
+                        <span data-i18n="otp_desc">أدخل رمز التحقق المكون من 4 أرقام الذي أرسلناه للتو إلى بريدك
+                            الإلكتروني:</span>
+                        <br>
+                        <strong id="displayUserEmail" class="text-primary mt-1 d-inline-block" dir="ltr"></strong>
+                    </p>
+
+                    <!-- OTP form -->
+                    <form id="otpForm" novalidate>
+
+                        <!-- OTP inputs -->
+                        <div class="d-flex justify-content-center gap-3 mb-4" dir="ltr">
+                            <input type="text" class="form-control otp-input text-center fw-bold fs-3 premium-input"
+                                maxlength="1" required autocomplete="off">
+                            <input type="text" class="form-control otp-input text-center fw-bold fs-3 premium-input"
+                                maxlength="1" required disabled autocomplete="off">
+                            <input type="text" class="form-control otp-input text-center fw-bold fs-3 premium-input"
+                                maxlength="1" required disabled autocomplete="off">
+                            <input type="text" class="form-control otp-input text-center fw-bold fs-3 premium-input"
+                                maxlength="1" required disabled autocomplete="off">
+                        </div>
+
+                        <!-- Verify OTP button -->
+                        <button type="submit" class="btn btn-primary w-100 py-3 mt-2 position-relative overflow-hidden"
+                            id="verifyOtpBtn">
+                            <span class="btn-text fw-bold" data-i18n="verify_btn">تأكيد الرمز</span>
+
+                            <!-- Button loader -->
+                            <div class="btn-loader d-none" id="otpBtnLoader">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Resend OTP section -->
+                    <div class="mt-4 pt-2">
+                        <span class="text-muted font-sm" data-i18n="didnt_receive_code">لم تستلم الرمز؟</span>
+                        <button type="button" class="btn btn-link text-decoration-none p-0 font-sm fw-bold ms-1"
+                            id="resendOtpBtn">
+                            <span data-i18n="resend_code">إعادة إرسال</span>
+
+                            <!-- Countdown timer -->
+                            <span id="resendTimer" class="text-danger d-none ms-1" dir="ltr">(60s)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS scripts (ملفات الجافاسكربت) -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
